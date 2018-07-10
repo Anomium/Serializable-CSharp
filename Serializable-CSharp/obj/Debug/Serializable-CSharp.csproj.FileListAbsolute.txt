@@ -1,0 +1,10 @@
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\bin\Debug\Serializable-CSharp.exe.config
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\bin\Debug\Serializable-CSharp.exe
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\bin\Debug\Serializable-CSharp.pdb
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable-CSharp.csprojAssemblyReference.cache
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable_CSharp.Properties.Resources.resources
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable_CSharp.Form1.resources
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable-CSharp.csproj.GenerateResource.cache
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable-CSharp.exe
+C:\Users\Melvin\source\repos\Serializable-CSharp\Serializable-CSharp\obj\Debug\Serializable-CSharp.pdb
