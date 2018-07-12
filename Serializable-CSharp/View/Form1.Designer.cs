@@ -34,10 +34,15 @@
             this.btn_Modificar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Marca = new System.Windows.Forms.TextBox();
+            this.txt_Color = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_Precio = new System.Windows.Forms.TextBox();
+            this.tbl_Tabla = new System.Windows.Forms.DataGridView();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.tbl_Tabla)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Guardar
@@ -48,6 +53,7 @@
             this.btn_Guardar.TabIndex = 0;
             this.btn_Guardar.Text = "Guardar";
             this.btn_Guardar.UseVisualStyleBackColor = true;
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
             // 
             // btn_Eliminar
             // 
@@ -94,19 +100,19 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Color";
             // 
-            // textBox1
+            // txt_Marca
             // 
-            this.textBox1.Location = new System.Drawing.Point(40, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.txt_Marca.Location = new System.Drawing.Point(40, 59);
+            this.txt_Marca.Name = "txt_Marca";
+            this.txt_Marca.Size = new System.Drawing.Size(100, 20);
+            this.txt_Marca.TabIndex = 6;
             // 
-            // textBox2
+            // txt_Color
             // 
-            this.textBox2.Location = new System.Drawing.Point(40, 110);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.txt_Color.Location = new System.Drawing.Point(40, 110);
+            this.txt_Color.Name = "txt_Color";
+            this.txt_Color.Size = new System.Drawing.Size(100, 20);
+            this.txt_Color.TabIndex = 7;
             // 
             // label3
             // 
@@ -117,22 +123,55 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Precio";
             // 
-            // textBox3
+            // txt_Precio
             // 
-            this.textBox3.Location = new System.Drawing.Point(40, 161);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 9;
+            this.txt_Precio.Location = new System.Drawing.Point(40, 161);
+            this.txt_Precio.Name = "txt_Precio";
+            this.txt_Precio.Size = new System.Drawing.Size(100, 20);
+            this.txt_Precio.TabIndex = 9;
+            // 
+            // tbl_Tabla
+            // 
+            this.tbl_Tabla.AllowUserToAddRows = false;
+            this.tbl_Tabla.AllowUserToDeleteRows = false;
+            this.tbl_Tabla.AllowUserToOrderColumns = true;
+            this.tbl_Tabla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tbl_Tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tbl_Tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Marca,
+            this.Color,
+            this.Precio});
+            this.tbl_Tabla.Location = new System.Drawing.Point(190, 42);
+            this.tbl_Tabla.Name = "tbl_Tabla";
+            this.tbl_Tabla.ReadOnly = true;
+            this.tbl_Tabla.Size = new System.Drawing.Size(598, 396);
+            this.tbl_Tabla.TabIndex = 10;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
+            // Color
+            // 
+            this.Color.HeaderText = "Color";
+            this.Color.Name = "Color";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbl_Tabla);
+            this.Controls.Add(this.txt_Precio);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_Color);
+            this.Controls.Add(this.txt_Marca);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Modificar);
@@ -141,6 +180,7 @@
             this.Controls.Add(this.btn_Guardar);
             this.Name = "Form1";
             this.Text = "Concesionario";
+            ((System.ComponentModel.ISupportInitialize)(this.tbl_Tabla)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,10 +194,14 @@
         private System.Windows.Forms.Button btn_Modificar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_Marca;
+        private System.Windows.Forms.TextBox txt_Color;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_Precio;
+        private System.Windows.Forms.DataGridView tbl_Tabla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }
 
