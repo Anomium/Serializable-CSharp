@@ -16,7 +16,7 @@ namespace Serializable_CSharp
     {
 
         private CarroController carroco = new CarroController();
-
+        private Object Index = null;
         public Form1()
         {
             InitializeComponent();
@@ -44,6 +44,17 @@ namespace Serializable_CSharp
             {
                 tabla.Rows.Insert(i, Lista[i]);
             }
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            carroco.Delete((int) Index);
+            listar(tbl_Tabla, carroco.ReadAll());
+        }
+
+        private void tbl_Tabla_MouseClick(object sender, MouseEventArgs e)
+        {
+            Index = (int) tbl_Tabla.CurrentRow.Index;
         }
     }
 }

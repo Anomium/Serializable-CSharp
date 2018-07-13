@@ -38,5 +38,10 @@ namespace Serializable_CSharp.Controller
             }
             return get;
         }
+
+        public void Delete(int index)
+        {
+            carros.RemoveAt(index);
+        }
     }
 }

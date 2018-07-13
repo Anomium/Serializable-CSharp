@@ -63,6 +63,7 @@
             this.btn_Eliminar.TabIndex = 1;
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // btn_Cancelar
             // 
@@ -146,21 +147,25 @@
             this.tbl_Tabla.ReadOnly = true;
             this.tbl_Tabla.Size = new System.Drawing.Size(598, 396);
             this.tbl_Tabla.TabIndex = 10;
+            this.tbl_Tabla.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbl_Tabla_MouseClick);
             // 
             // Marca
             // 
             this.Marca.HeaderText = "Marca";
             this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
             // 
             // Color
             // 
             this.Color.HeaderText = "Color";
             this.Color.Name = "Color";
+            this.Color.ReadOnly = true;
             // 
             // Precio
             // 
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
             // 
             // Form1
             // 
