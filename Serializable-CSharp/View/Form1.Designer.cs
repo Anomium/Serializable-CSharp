@@ -49,7 +49,7 @@
             // 
             this.btn_Guardar.Location = new System.Drawing.Point(40, 283);
             this.btn_Guardar.Name = "btn_Guardar";
-            this.btn_Guardar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Guardar.Size = new System.Drawing.Size(100, 23);
             this.btn_Guardar.TabIndex = 0;
             this.btn_Guardar.Text = "Guardar";
             this.btn_Guardar.UseVisualStyleBackColor = true;
@@ -59,7 +59,7 @@
             // 
             this.btn_Eliminar.Location = new System.Drawing.Point(40, 371);
             this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Eliminar.Size = new System.Drawing.Size(100, 23);
             this.btn_Eliminar.TabIndex = 1;
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = true;
@@ -69,19 +69,21 @@
             // 
             this.btn_Cancelar.Location = new System.Drawing.Point(40, 342);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancelar.Size = new System.Drawing.Size(100, 23);
             this.btn_Cancelar.TabIndex = 2;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // btn_Modificar
             // 
             this.btn_Modificar.Location = new System.Drawing.Point(40, 313);
             this.btn_Modificar.Name = "btn_Modificar";
-            this.btn_Modificar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Modificar.Size = new System.Drawing.Size(100, 23);
             this.btn_Modificar.TabIndex = 3;
             this.btn_Modificar.Text = "Modificar";
             this.btn_Modificar.UseVisualStyleBackColor = true;
+            this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
             // 
             // label1
             // 
@@ -185,6 +187,7 @@
             this.Controls.Add(this.btn_Guardar);
             this.Name = "Form1";
             this.Text = "Concesionario";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Tabla)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

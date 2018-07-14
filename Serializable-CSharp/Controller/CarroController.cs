@@ -43,5 +43,11 @@ namespace Serializable_CSharp.Controller
         {
             carros.RemoveAt(index);
         }
+
+        public void Update(int index, Carro carr)
+        {
+            carros[index] = carr;
+            
+        }
     }
 }

@@ -29,8 +29,18 @@ namespace Serializable_CSharp
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-            carroco.Create(new Carro(txt_Marca.Text, txt_Color.Text, Convert.ToDouble(txt_Precio.Text)));
-            listar(tbl_Tabla, carroco.ReadAll());
+
+            if (btn_Guardar.Text == "Guardar")
+            {
+                carroco.Create(new Carro(txt_Marca.Text, txt_Color.Text, Convert.ToDouble(txt_Precio.Text)));
+                listar(tbl_Tabla, carroco.ReadAll());
+            }
+            if (btn_Guardar.Text == "Guardar Cambios")
+            {
+                carroco.Update((int)Index, new Carro(txt_Marca.Text, txt_Color.Text, Convert.ToDouble(txt_Precio.Text)));
+                listar(tbl_Tabla, carroco.ReadAll());
+                btn_Guardar.Text = "Guardar";
+            }
         }
 
         public void listar(DataGridView tabla, List<string[]> Lista)
@@ -55,6 +65,47 @@ namespace Serializable_CSharp
         private void tbl_Tabla_MouseClick(object sender, MouseEventArgs e)
         {
             Index = (int) tbl_Tabla.CurrentRow.Index;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+
+            if (MessageConfirm("Desea Modificar"))
+            {
+                btn_Guardar.Text = "Guardar Cambios";
+            }
+            
+        }
+
+        public Boolean MessageConfirm(string Texto)
+        {
+            DialogResult result = MessageBox.Show(Texto, "Salir", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                return true;
+            }
+            else if (result == DialogResult.No)
+            {
+                return false;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
