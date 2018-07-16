@@ -16,10 +16,17 @@ namespace Serializable_CSharp.Controller
 
         internal List<Carro> Carros { get => carros; set => carros = value; }
 
-        public List<Carro> Read()
+        public List<String[]> Read(string filter)
         {
-            return Carros;
-
+            List<string[]> get = new List<string[]>();
+            for (int i = 0; i < carros.Count; i++)
+            {
+                if (carros[i].Marca.Contains(filter))
+                {
+                    get.Add(new string[] { carros[i].Marca, carros[i].Color, Convert.ToString(carros[i].Precio)});
+                }
+            }
+            return get;
         }
 
         public void Create(Carro carro)

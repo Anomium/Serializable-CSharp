@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,12 +33,12 @@ namespace Serializable_CSharp
 
             if (btn_Guardar.Text == "Guardar")
             {
-                carroco.Create(new Carro(txt_Marca.Text, txt_Color.Text, Convert.ToDouble(txt_Precio.Text)));
+                carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
             }
             if (btn_Guardar.Text == "Guardar Cambios")
             {
-                carroco.Update((int)Index, new Carro(txt_Marca.Text, txt_Color.Text, Convert.ToDouble(txt_Precio.Text)));
+                carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
                 btn_Guardar.Text = "Guardar";
             }
@@ -50,7 +51,7 @@ namespace Serializable_CSharp
                 tabla.Rows.Clear();
             }
             
-            for (int i = 0; i < carroco.Carros.Count; i++)
+            for (int i = 0; i < Lista.Count; i++)
             {
                 tabla.Rows.Insert(i, Lista[i]);
             }
@@ -70,6 +71,7 @@ namespace Serializable_CSharp
         private void Form1_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
@@ -106,6 +108,28 @@ namespace Serializable_CSharp
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            BuscarTodo(txt_Buscar.Text, tbl_Tabla, carroco.Read(txt_Buscar.Text.ToUpper()), btn_Cancelar);
+        }
+
+        public void BuscarTodo(String Filter, DataGridView tabla, List<string[]> List, Button boton)
+        {
+            if (Filter == null || Filter == String.Empty)
+            {
+                MessageBox.Show("Los datos ingresados deben ser validos");
+            }
+            else if (List.Count <= 0 || List == null)
+            {
+                MessageBox.Show("No se ha encontrado coincidencias");
+            }
+            else
+            {
+                listar(tabla, List);
+                btn_Cancelar.Enabled = true;
+            }
         }
     }
 }

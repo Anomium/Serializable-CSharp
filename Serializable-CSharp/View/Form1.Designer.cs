@@ -42,12 +42,15 @@
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Buscar = new System.Windows.Forms.Button();
+            this.txt_Buscar = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Tabla)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Guardar
             // 
-            this.btn_Guardar.Location = new System.Drawing.Point(40, 283);
+            this.btn_Guardar.Location = new System.Drawing.Point(40, 200);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(100, 23);
             this.btn_Guardar.TabIndex = 0;
@@ -57,7 +60,7 @@
             // 
             // btn_Eliminar
             // 
-            this.btn_Eliminar.Location = new System.Drawing.Point(40, 371);
+            this.btn_Eliminar.Location = new System.Drawing.Point(40, 288);
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(100, 23);
             this.btn_Eliminar.TabIndex = 1;
@@ -67,7 +70,8 @@
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(40, 342);
+            this.btn_Cancelar.Enabled = false;
+            this.btn_Cancelar.Location = new System.Drawing.Point(40, 259);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(100, 23);
             this.btn_Cancelar.TabIndex = 2;
@@ -77,7 +81,7 @@
             // 
             // btn_Modificar
             // 
-            this.btn_Modificar.Location = new System.Drawing.Point(40, 313);
+            this.btn_Modificar.Location = new System.Drawing.Point(40, 230);
             this.btn_Modificar.Name = "btn_Modificar";
             this.btn_Modificar.Size = new System.Drawing.Size(100, 23);
             this.btn_Modificar.TabIndex = 3;
@@ -169,11 +173,40 @@
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
             // 
+            // btn_Buscar
+            // 
+            this.btn_Buscar.Location = new System.Drawing.Point(94, 405);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(65, 23);
+            this.btn_Buscar.TabIndex = 11;
+            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
+            // 
+            // txt_Buscar
+            // 
+            this.txt_Buscar.Location = new System.Drawing.Point(40, 370);
+            this.txt_Buscar.Name = "txt_Buscar";
+            this.txt_Buscar.Size = new System.Drawing.Size(119, 20);
+            this.txt_Buscar.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 354);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Marca";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txt_Buscar);
+            this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.tbl_Tabla);
             this.Controls.Add(this.txt_Precio);
             this.Controls.Add(this.label3);
@@ -210,6 +243,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Button btn_Buscar;
+        private System.Windows.Forms.TextBox txt_Buscar;
+        private System.Windows.Forms.Label label4;
     }
 }
 
