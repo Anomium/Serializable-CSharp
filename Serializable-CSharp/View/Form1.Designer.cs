@@ -45,6 +45,7 @@
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_CancelarBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Tabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,9 +176,9 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(94, 405);
+            this.btn_Buscar.Location = new System.Drawing.Point(110, 405);
             this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(65, 23);
+            this.btn_Buscar.Size = new System.Drawing.Size(49, 23);
             this.btn_Buscar.TabIndex = 11;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
@@ -199,11 +200,23 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Marca";
             // 
+            // btn_CancelarBusqueda
+            // 
+            this.btn_CancelarBusqueda.Enabled = false;
+            this.btn_CancelarBusqueda.Location = new System.Drawing.Point(40, 404);
+            this.btn_CancelarBusqueda.Name = "btn_CancelarBusqueda";
+            this.btn_CancelarBusqueda.Size = new System.Drawing.Size(64, 23);
+            this.btn_CancelarBusqueda.TabIndex = 14;
+            this.btn_CancelarBusqueda.Text = "Cancelar";
+            this.btn_CancelarBusqueda.UseVisualStyleBackColor = true;
+            this.btn_CancelarBusqueda.Click += new System.EventHandler(this.btn_CancelarBusqueda_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_CancelarBusqueda);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.btn_Buscar);
@@ -246,6 +259,7 @@
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.TextBox txt_Buscar;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_CancelarBusqueda;
     }
 }
 

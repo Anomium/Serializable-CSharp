@@ -112,7 +112,7 @@ namespace Serializable_CSharp
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            BuscarTodo(txt_Buscar.Text, tbl_Tabla, carroco.Read(txt_Buscar.Text.ToUpper()), btn_Cancelar);
+            BuscarTodo(txt_Buscar.Text, tbl_Tabla, carroco.Read(txt_Buscar.Text.ToUpper()), btn_CancelarBusqueda);
         }
 
         public void BuscarTodo(String Filter, DataGridView tabla, List<string[]> List, Button boton)
@@ -128,8 +128,14 @@ namespace Serializable_CSharp
             else
             {
                 listar(tabla, List);
-                btn_Cancelar.Enabled = true;
+                boton.Enabled = true;
             }
+        }
+
+        private void btn_CancelarBusqueda_Click(object sender, EventArgs e)
+        {
+            listar(tbl_Tabla, carroco.ReadAll());
+            btn_CancelarBusqueda.Enabled = false;
         }
     }
 }
