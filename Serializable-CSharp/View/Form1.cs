@@ -35,12 +35,15 @@ namespace Serializable_CSharp
             {
                 carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
+                btn_Buscar.Enabled = true;
             }
             if (btn_Guardar.Text == "Guardar Cambios")
             {
                 carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
                 btn_Guardar.Text = "Guardar";
+                btn_Cancelar.Enabled = false;
+                btn_Modificar.Enabled = true;
             }
         }
 
@@ -66,11 +69,22 @@ namespace Serializable_CSharp
         private void tbl_Tabla_MouseClick(object sender, MouseEventArgs e)
         {
             Index = (int) tbl_Tabla.CurrentRow.Index;
+            btn_Eliminar.Enabled = true;
+            btn_Cancelar.Enabled = true;
+            btn_Modificar.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            if (carroco.Carros.Count == 0)
+            {
+                btn_Eliminar.Enabled = false;
+                btn_Cancelar.Enabled = false;
+                btn_Modificar.Enabled = false;
+                btn_CancelarBusqueda.Enabled = false;
+                btn_Buscar.Enabled = false;
+            }
             
         }
 
@@ -80,6 +94,12 @@ namespace Serializable_CSharp
             if (MessageConfirm("Desea Modificar"))
             {
                 btn_Guardar.Text = "Guardar Cambios";
+                btn_Modificar.Enabled = false;
+                btn_Cancelar.Enabled = true;
+            }
+            else
+            {
+                Index = null;
             }
             
         }
@@ -107,7 +127,10 @@ namespace Serializable_CSharp
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
-
+            btn_Guardar.Text = "Guardar";
+            btn_Modificar.Enabled = true;
+            btn_Eliminar.Enabled = true;
+            btn_Cancelar.Enabled = false;
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
