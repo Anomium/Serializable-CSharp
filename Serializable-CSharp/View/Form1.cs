@@ -42,8 +42,10 @@ namespace Serializable_CSharp
                 carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
                 btn_Guardar.Text = "Guardar";
+                chbx_Seleccionado.Checked = false;
                 btn_Cancelar.Enabled = false;
                 btn_Modificar.Enabled = true;
+                Index = null;
             }
         }
 
@@ -64,11 +66,14 @@ namespace Serializable_CSharp
         {
             carroco.Delete((int) Index);
             listar(tbl_Tabla, carroco.ReadAll());
+            Index = null;
+            chbx_Seleccionado.Checked = false;
         }
 
         private void tbl_Tabla_MouseClick(object sender, MouseEventArgs e)
         {
-            Index = (int) tbl_Tabla.CurrentRow.Index;
+            Index = (int)tbl_Tabla.CurrentRow.Index;
+            chbx_Seleccionado.Checked = true;
             btn_Eliminar.Enabled = true;
             btn_Cancelar.Enabled = true;
             btn_Modificar.Enabled = true;
@@ -128,6 +133,7 @@ namespace Serializable_CSharp
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             btn_Guardar.Text = "Guardar";
+            chbx_Seleccionado.Checked = false;
             btn_Modificar.Enabled = true;
             btn_Eliminar.Enabled = true;
             btn_Cancelar.Enabled = false;

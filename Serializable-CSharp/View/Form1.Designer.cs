@@ -46,6 +46,7 @@
             this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_CancelarBusqueda = new System.Windows.Forms.Button();
+            this.chbx_Seleccionado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_Tabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,11 +212,23 @@
             this.btn_CancelarBusqueda.UseVisualStyleBackColor = true;
             this.btn_CancelarBusqueda.Click += new System.EventHandler(this.btn_CancelarBusqueda_Click);
             // 
+            // chbx_Seleccionado
+            // 
+            this.chbx_Seleccionado.AutoSize = true;
+            this.chbx_Seleccionado.Enabled = false;
+            this.chbx_Seleccionado.Location = new System.Drawing.Point(43, 318);
+            this.chbx_Seleccionado.Name = "chbx_Seleccionado";
+            this.chbx_Seleccionado.Size = new System.Drawing.Size(91, 17);
+            this.chbx_Seleccionado.TabIndex = 15;
+            this.chbx_Seleccionado.Text = "Seleccionado";
+            this.chbx_Seleccionado.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chbx_Seleccionado);
             this.Controls.Add(this.btn_CancelarBusqueda);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_Buscar);
@@ -260,6 +273,7 @@
         private System.Windows.Forms.TextBox txt_Buscar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_CancelarBusqueda;
+        private System.Windows.Forms.CheckBox chbx_Seleccionado;
     }
 }
 
