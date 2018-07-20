@@ -36,11 +36,13 @@ namespace Serializable_CSharp
                 carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
                 btn_Buscar.Enabled = true;
+                BorrarText(txt_Marca, txt_Color, txt_Precio);
             }
             if (btn_Guardar.Text == "Guardar Cambios")
             {
                 carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
+                BorrarText(txt_Marca, txt_Color, txt_Precio);
                 btn_Guardar.Text = "Guardar";
                 chbx_Seleccionado.Checked = false;
                 btn_Cancelar.Enabled = false;
@@ -65,6 +67,7 @@ namespace Serializable_CSharp
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             carroco.Delete((int) Index);
+            BorrarText(txt_Marca, txt_Color, txt_Precio);
             listar(tbl_Tabla, carroco.ReadAll());
             Index = null;
             chbx_Seleccionado.Checked = false;
@@ -73,6 +76,9 @@ namespace Serializable_CSharp
         private void tbl_Tabla_MouseClick(object sender, MouseEventArgs e)
         {
             Index = (int)tbl_Tabla.CurrentRow.Index;
+            txt_Marca.Text = tbl_Tabla.CurrentRow.Cells[0].Value.ToString();
+            txt_Color.Text = tbl_Tabla.CurrentRow.Cells[1].Value.ToString();
+            txt_Precio.Text = tbl_Tabla.CurrentRow.Cells[2].Value.ToString();
             chbx_Seleccionado.Checked = true;
             btn_Eliminar.Enabled = true;
             btn_Cancelar.Enabled = true;
@@ -133,6 +139,7 @@ namespace Serializable_CSharp
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             btn_Guardar.Text = "Guardar";
+            BorrarText(txt_Marca, txt_Color, txt_Precio);
             chbx_Seleccionado.Checked = false;
             btn_Modificar.Enabled = true;
             btn_Eliminar.Enabled = true;
@@ -165,6 +172,13 @@ namespace Serializable_CSharp
         {
             listar(tbl_Tabla, carroco.ReadAll());
             btn_CancelarBusqueda.Enabled = false;
+        }
+
+        public void BorrarText(TextBox marca, TextBox color, TextBox precio)
+        {
+            marca.Text = null;
+            color.Text = null;
+            precio.Text = null;
         }
     }
 }
