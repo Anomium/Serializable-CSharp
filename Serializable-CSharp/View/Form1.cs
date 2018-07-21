@@ -36,13 +36,13 @@ namespace Serializable_CSharp
                 carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
                 btn_Buscar.Enabled = true;
-                BorrarText(txt_Marca, txt_Color, txt_Precio);
+                BorrarText(txt_Marca, txt_Color, txt_Precio, true);
             }
             if (btn_Guardar.Text == "Guardar Cambios")
             {
                 carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                 listar(tbl_Tabla, carroco.ReadAll());
-                BorrarText(txt_Marca, txt_Color, txt_Precio);
+                BorrarText(txt_Marca, txt_Color, txt_Precio, true);
                 btn_Guardar.Text = "Guardar";
                 chbx_Seleccionado.Checked = false;
                 btn_Cancelar.Enabled = false;
@@ -67,7 +67,7 @@ namespace Serializable_CSharp
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             carroco.Delete((int) Index);
-            BorrarText(txt_Marca, txt_Color, txt_Precio);
+            BorrarText(txt_Marca, txt_Color, txt_Precio, true);
             listar(tbl_Tabla, carroco.ReadAll());
             Index = null;
             chbx_Seleccionado.Checked = false;
@@ -79,6 +79,11 @@ namespace Serializable_CSharp
             txt_Marca.Text = tbl_Tabla.CurrentRow.Cells[0].Value.ToString();
             txt_Color.Text = tbl_Tabla.CurrentRow.Cells[1].Value.ToString();
             txt_Precio.Text = tbl_Tabla.CurrentRow.Cells[2].Value.ToString();
+
+            txt_Marca.Enabled = false;
+            txt_Color.Enabled = false;
+            txt_Precio.Enabled = false;
+
             chbx_Seleccionado.Checked = true;
             btn_Eliminar.Enabled = true;
             btn_Cancelar.Enabled = true;
@@ -107,6 +112,10 @@ namespace Serializable_CSharp
                 btn_Guardar.Text = "Guardar Cambios";
                 btn_Modificar.Enabled = false;
                 btn_Cancelar.Enabled = true;
+
+                txt_Marca.Enabled = true;
+                txt_Color.Enabled = true;
+                txt_Precio.Enabled = true;
             }
             else
             {
@@ -139,7 +148,7 @@ namespace Serializable_CSharp
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             btn_Guardar.Text = "Guardar";
-            BorrarText(txt_Marca, txt_Color, txt_Precio);
+            BorrarText(txt_Marca, txt_Color, txt_Precio, true);
             chbx_Seleccionado.Checked = false;
             btn_Modificar.Enabled = true;
             btn_Eliminar.Enabled = true;
@@ -174,11 +183,15 @@ namespace Serializable_CSharp
             btn_CancelarBusqueda.Enabled = false;
         }
 
-        public void BorrarText(TextBox marca, TextBox color, TextBox precio)
+        public void BorrarText(TextBox marca, TextBox color, TextBox precio, Boolean cond)
         {
             marca.Text = null;
             color.Text = null;
             precio.Text = null;
+
+            marca.Enabled = cond;
+            color.Enabled = cond;
+            precio.Enabled = cond;
         }
     }
 }
