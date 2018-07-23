@@ -30,24 +30,44 @@ namespace Serializable_CSharp
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-
-            if (btn_Guardar.Text == "Guardar")
+            try
             {
-                carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
-                listar(tbl_Tabla, carroco.ReadAll());
-                btn_Buscar.Enabled = true;
-                BorrarText(txt_Marca, txt_Color, txt_Precio, true);
+                if (btn_Guardar.Text == "Guardar")
+                {
+                    if (ValVacio(txt_Marca, txt_Color, txt_Precio))
+                    {
+                        carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
+                        listar(tbl_Tabla, carroco.ReadAll());
+                        btn_Buscar.Enabled = true;
+                        BorrarText(txt_Marca, txt_Color, txt_Precio, true);
+                    }
+                }
             }
-            if (btn_Guardar.Text == "Guardar Cambios")
+            catch (Exception)
             {
-                carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
-                listar(tbl_Tabla, carroco.ReadAll());
-                BorrarText(txt_Marca, txt_Color, txt_Precio, true);
-                btn_Guardar.Text = "Guardar";
-                chbx_Seleccionado.Checked = false;
-                btn_Cancelar.Enabled = false;
-                btn_Modificar.Enabled = true;
-                Index = null;
+                MessageBox.Show("Verifique que los campos esten correctos.", "Error");
+            }
+            try
+            {
+                if (btn_Guardar.Text == "Guardar Cambios")
+                {
+                    if (ValVacio(txt_Marca, txt_Color, txt_Precio))
+                    {
+                        carroco.Update((int)Index, new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
+                        listar(tbl_Tabla, carroco.ReadAll());
+                        BorrarText(txt_Marca, txt_Color, txt_Precio, true);
+                        btn_Guardar.Text = "Guardar";
+                        chbx_Seleccionado.Checked = false;
+                        btn_Cancelar.Enabled = false;
+                        btn_Modificar.Enabled = true;
+                        Index = null;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -57,7 +77,7 @@ namespace Serializable_CSharp
             {
                 tabla.Rows.Clear();
             }
-            
+
             for (int i = 0; i < Lista.Count; i++)
             {
                 tabla.Rows.Insert(i, Lista[i]);
@@ -66,7 +86,7 @@ namespace Serializable_CSharp
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-            carroco.Delete((int) Index);
+            carroco.Delete((int)Index);
             BorrarText(txt_Marca, txt_Color, txt_Precio, true);
             listar(tbl_Tabla, carroco.ReadAll());
             Index = null;
@@ -101,7 +121,7 @@ namespace Serializable_CSharp
                 btn_CancelarBusqueda.Enabled = false;
                 btn_Buscar.Enabled = false;
             }
-            
+
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
@@ -121,7 +141,7 @@ namespace Serializable_CSharp
             {
                 Index = null;
             }
-            
+
         }
 
         public Boolean MessageConfirm(string Texto)
@@ -192,6 +212,27 @@ namespace Serializable_CSharp
             marca.Enabled = cond;
             color.Enabled = cond;
             precio.Enabled = cond;
+        }
+
+        public Boolean ValVacio(TextBox marca, TextBox color, TextBox precio)
+        {
+            try
+            {
+                if (marca.Text == null || marca.Text == "" || marca.Text == String.Empty ||
+                color.Text == null || color.Text == "" || color.Text == String.Empty ||
+                precio.Text == null || precio.Text == "" || precio.Text == String.Empty)
+                {
+                    MessageBox.Show("No se aceptan campos vacios","Error");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            } catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
