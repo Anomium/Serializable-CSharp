@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Serializable_CSharp.Model
 {
+    [Serializable]
     class Carro
     {
         public String Marca { get; set; }

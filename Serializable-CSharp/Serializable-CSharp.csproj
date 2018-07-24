@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CarroController.cs" />
+    <Compile Include="Controller\Serializacion.cs" />
     <Compile Include="Model\Carro.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>

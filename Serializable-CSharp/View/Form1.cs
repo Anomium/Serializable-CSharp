@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,7 @@ namespace Serializable_CSharp
     {
 
         private CarroController carroco = new CarroController();
+        private Serializacion serco = new Serializacion();
         private Object Index = null;
         public Form1()
         {
@@ -39,7 +42,9 @@ namespace Serializable_CSharp
                         carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                         listar(tbl_Tabla, carroco.ReadAll());
                         btn_Buscar.Enabled = true;
+                        serco.Serializar(carroco.Carros);
                         BorrarText(txt_Marca, txt_Color, txt_Precio, true);
+                        
                     }
                 }
             }
@@ -113,6 +118,9 @@ namespace Serializable_CSharp
         private void Form1_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            
+            carroco.Carros = (serco.Deserializar() != null) ? serco.Deserializar() as List<Carro> : new List<Carro>();
+            listar(tbl_Tabla, carroco.ReadAll());
             if (carroco.Carros.Count == 0)
             {
                 btn_Eliminar.Enabled = false;
