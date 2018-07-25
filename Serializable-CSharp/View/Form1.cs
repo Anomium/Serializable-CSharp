@@ -94,6 +94,9 @@ namespace Serializable_CSharp
             carroco.Delete((int)Index);
             BorrarText(txt_Marca, txt_Color, txt_Precio, true);
             listar(tbl_Tabla, carroco.ReadAll());
+            btn_Modificar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            btn_Cancelar.Enabled = false;
             Index = null;
             chbx_Seleccionado.Checked = false;
         }
@@ -147,6 +150,9 @@ namespace Serializable_CSharp
             }
             else
             {
+                btn_Modificar.Enabled = false;
+                btn_Eliminar.Enabled = false;
+                btn_Cancelar.Enabled = false;
                 Index = null;
             }
 
@@ -178,8 +184,8 @@ namespace Serializable_CSharp
             btn_Guardar.Text = "Guardar";
             BorrarText(txt_Marca, txt_Color, txt_Precio, true);
             chbx_Seleccionado.Checked = false;
-            btn_Modificar.Enabled = true;
-            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = false;
+            btn_Eliminar.Enabled = false;
             btn_Cancelar.Enabled = false;
         }
 
