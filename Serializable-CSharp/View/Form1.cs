@@ -62,6 +62,7 @@ namespace Serializable_CSharp
                         listar(tbl_Tabla, carroco.ReadAll());
                         BorrarText(txt_Marca, txt_Color, txt_Precio, true);
                         btn_Guardar.Text = "Guardar";
+                        serco.Serializar(carroco.Carros);
                         chbx_Seleccionado.Checked = false;
                         btn_Cancelar.Enabled = false;
                         btn_Modificar.Enabled = true;
@@ -91,14 +92,26 @@ namespace Serializable_CSharp
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-            carroco.Delete((int)Index);
-            BorrarText(txt_Marca, txt_Color, txt_Precio, true);
-            listar(tbl_Tabla, carroco.ReadAll());
-            btn_Modificar.Enabled = false;
-            btn_Eliminar.Enabled = false;
-            btn_Cancelar.Enabled = false;
-            Index = null;
-            chbx_Seleccionado.Checked = false;
+            try
+            {
+                if (MessageConfirm("¿Desea eliminar el item?"))
+                {
+                    carroco.Delete((int)Index);
+                    BorrarText(txt_Marca, txt_Color, txt_Precio, true);
+                    listar(tbl_Tabla, carroco.ReadAll());
+                    btn_Modificar.Enabled = false;
+                    btn_Eliminar.Enabled = false;
+                    btn_Cancelar.Enabled = false;
+                    Index = null;
+                    serco.Serializar(carroco.Carros);
+                    chbx_Seleccionado.Checked = false;
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Debe seleccionar un item de la lista.", "Aviso");
+            }
         }
 
         private void tbl_Tabla_MouseClick(object sender, MouseEventArgs e)
@@ -124,7 +137,7 @@ namespace Serializable_CSharp
             
             carroco.Carros = (serco.Deserializar() != null) ? serco.Deserializar() as List<Carro> : new List<Carro>();
             listar(tbl_Tabla, carroco.ReadAll());
-            if (carroco.Carros.Count == 0)
+            if (carroco.Carros.Count >= 0)
             {
                 btn_Eliminar.Enabled = false;
                 btn_Cancelar.Enabled = false;
@@ -138,7 +151,7 @@ namespace Serializable_CSharp
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
 
-            if (MessageConfirm("Desea Modificar"))
+            if (MessageConfirm("¿Desea Modificar?"))
             {
                 btn_Guardar.Text = "Guardar Cambios";
                 btn_Modificar.Enabled = false;
