@@ -17,9 +17,8 @@ namespace Serializable_CSharp
 {
     public partial class Form1 : Form
     {
-
+        SaveAndReadData.SaveReadData srd = new SaveAndReadData.SaveReadData();
         private CarroController carroco = new CarroController();
-        private Serializacion serco = new Serializacion();
         private Object Index = null;
         public Form1()
         {
@@ -42,7 +41,7 @@ namespace Serializable_CSharp
                         carroco.Create(new Carro(txt_Marca.Text.ToUpper(), txt_Color.Text.ToUpper(), Convert.ToDouble(txt_Precio.Text)));
                         listar(tbl_Tabla, carroco.ReadAll());
                         btn_Buscar.Enabled = true;
-                        serco.Serializar(carroco.Carros);
+                        srd.Serializar(carroco.Carros, "Carros.dat");
                         BorrarText(txt_Marca, txt_Color, txt_Precio, true);
                         
                     }
@@ -62,7 +61,7 @@ namespace Serializable_CSharp
                         listar(tbl_Tabla, carroco.ReadAll());
                         BorrarText(txt_Marca, txt_Color, txt_Precio, true);
                         btn_Guardar.Text = "Guardar";
-                        serco.Serializar(carroco.Carros);
+                        srd.Serializar(carroco.Carros, "Carros.dat");
                         chbx_Seleccionado.Checked = false;
                         btn_Cancelar.Enabled = false;
                         btn_Modificar.Enabled = true;
@@ -103,7 +102,7 @@ namespace Serializable_CSharp
                     btn_Eliminar.Enabled = false;
                     btn_Cancelar.Enabled = false;
                     Index = null;
-                    serco.Serializar(carroco.Carros);
+                    srd.Serializar(carroco.Carros, "Carros.dat");
                     chbx_Seleccionado.Checked = false;
                 }
             }
@@ -134,8 +133,8 @@ namespace Serializable_CSharp
         private void Form1_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-            
-            carroco.Carros = (serco.Deserializar() != null) ? serco.Deserializar() as List<Carro> : new List<Carro>();
+
+            carroco.Carros = (srd.Deserializar("Carros.dat") != null) ? srd.Deserializar("Carros.dat") as List<Carro> : new List<Carro>();
             listar(tbl_Tabla, carroco.ReadAll());
             if (carroco.Carros.Count >= 0)
             {
